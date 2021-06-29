@@ -130,6 +130,7 @@ jobs:
             -D CMAKE_MAKE_PROGRAM=ninja
             -D CMAKE_C_COMPILER_LAUNCHER=ccache
             -D CMAKE_CXX_COMPILER_LAUNCHER=ccache
+            -D DWITH_HWLOC=OFF
           RESULT_VARIABLE result
         )
         if (NOT result EQUAL 0)
@@ -159,7 +160,7 @@ jobs:
         execute_process(COMMAND ccache -p)
         execute_process(COMMAND ccache -z)
         execute_process(
-          COMMAND cmake --build build -DWITH_HWLOC=OFF
+          COMMAND cmake --build build
           RESULT_VARIABLE result
           OUTPUT_VARIABLE output
           ERROR_VARIABLE output
